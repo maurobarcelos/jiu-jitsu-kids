@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: "Fredoka", "Comic Sans MS", system-ui;
+  --font-body: "Nunito", system-ui;
+}
+
+html, body {
+  font-family: var(--font-body);
+  background: #FFF8E7;
+  color: #1F1F1F;
+  -webkit-font-smoothing: antialiased;
+  overscroll-behavior: none;
+}
+
+/* Evita zoom iOS ao focar input */
+input, select, textarea {
+  font-size: 16px !important;
+}
+
+/* Botão chunky padrão */
+.btn-chunky {
+  @apply font-display font-bold border-[3px] border-ink rounded-2xl px-5 py-3 transition-all active:translate-y-1;
+}
+
+/* Card chunky padrão */
+.card-chunky {
+  @apply bg-white border-[3px] border-ink rounded-3xl shadow-chunky;
+}
+
+/* Esconder scroll mas permitir scroll */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
