@@ -66,7 +66,16 @@ export default function Game({
     const reward = calculateReward(total);
     const today = new Date().toISOString().split("T")[0];
 
+    // Pega o user_id antes de inserir (necessário para RLS)
+    const { data: userData, error: userError } = await supabase.auth.getUser();
+    if (userError || !userData.user) {
+      alert("Ops! Sessão expirada. Faça login novamente.");
+      setSaving(false);
+      return;
+    }
+
     const { error } = await supabase.from("training_sessions").insert({
+      user_id: userData.user.id,
       date: today,
       garra: scores.garra,
       esforco: scores.esforco,
