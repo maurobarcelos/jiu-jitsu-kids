@@ -14,7 +14,6 @@ export default function ResultScreen({
 }) {
   const [count, setCount] = useState(0);
 
-  // Anima o número contando de 0 até rewardMinutes
   useEffect(() => {
     const duration = 1500;
     const steps = 30;
@@ -36,7 +35,15 @@ export default function ResultScreen({
   }, [rewardMinutes]);
 
   return (
-    <div className="fixed inset-0 bg-white z-50 flex flex-col items-center justify-between py-12 px-6 animate-fade-in">
+    <div
+      className="fixed inset-0 bg-white z-50 flex flex-col items-center justify-between animate-fade-in overflow-y-auto"
+      style={{
+        paddingTop: 'max(1.5rem, env(safe-area-inset-top))',
+        paddingBottom: 'max(1.5rem, env(safe-area-inset-bottom))',
+        paddingLeft: '1.25rem',
+        paddingRight: '1.25rem',
+      }}
+    >
       {/* Topo - barra de progresso completa */}
       <div className="w-full max-w-sm">
         <div className="h-2 bg-border rounded-full overflow-hidden">
@@ -45,18 +52,16 @@ export default function ResultScreen({
       </div>
 
       {/* Centro - mascote em spotlight */}
-      <div className="relative flex flex-col items-center">
+      <div className="relative flex flex-col items-center my-6">
         {/* Raios de luz subindo */}
         <div className="absolute inset-0 flex items-end justify-center pointer-events-none">
-          <div className="relative w-64 h-64">
-            {/* Spotlight base */}
+          <div className="relative w-48 h-48 sm:w-64 sm:h-64">
             <div
               className="absolute inset-0"
               style={{
                 background: "radial-gradient(ellipse 70% 60% at center bottom, rgba(34, 197, 94, 0.25) 0%, rgba(34, 197, 94, 0.08) 40%, transparent 70%)",
               }}
             />
-            {/* Raios verticais */}
             {[0, 1, 2, 3, 4].map((i) => (
               <div
                 key={i}
@@ -64,7 +69,7 @@ export default function ResultScreen({
                 style={{
                   bottom: "0",
                   left: `${20 + i * 15}%`,
-                  height: `${80 + Math.random() * 60}px`,
+                  height: `${60 + (i % 3) * 20}px`,
                   animationDelay: `${i * 0.2}s`,
                   transform: `rotate(${(i - 2) * 8}deg)`,
                 }}
@@ -77,37 +82,37 @@ export default function ResultScreen({
         <Sparkles />
 
         {/* Mascote */}
-        <div className="relative z-10 text-9xl animate-spotlight">
+        <div className="relative z-10 text-7xl sm:text-9xl animate-spotlight">
           🐯
         </div>
 
         {/* Pedestal */}
-        <div className="relative z-10 mt-4 w-32 h-8 rounded-full bg-gradient-to-br from-tangerine to-tangerine/70 shadow-lift" />
+        <div className="relative z-10 mt-3 w-28 h-7 sm:w-32 sm:h-8 rounded-full bg-gradient-to-br from-tangerine to-tangerine/70 shadow-lift" />
 
         {/* Texto */}
-        <div className="relative z-10 mt-10 text-center">
-          <h1 className="font-display text-5xl font-semibold text-ink tracking-tight leading-tight">
+        <div className="relative z-10 mt-8 text-center">
+          <h1 className="font-display text-4xl sm:text-5xl font-semibold text-ink tracking-tight leading-tight">
             Treino<br />completo!
           </h1>
 
-          <div className="mt-8">
+          <div className="mt-6 sm:mt-8">
             <div className="text-xs font-display font-semibold text-muted uppercase tracking-widest mb-2">
               Minutos de TV
             </div>
             <div className="flex items-center justify-center gap-2">
-              <span className="text-7xl font-display font-bold text-ink tabular-nums">
+              <span className="text-6xl sm:text-7xl font-display font-bold text-ink tabular-nums">
                 {count}
               </span>
-              <span className="text-leaf text-3xl">✨</span>
+              <span className="text-leaf text-2xl sm:text-3xl">✨</span>
             </div>
           </div>
 
-          <div className="mt-6 inline-flex items-center gap-2 bg-leafSoft text-leaf px-4 py-2 rounded-full text-sm font-display font-semibold">
+          <div className="mt-5 inline-flex items-center gap-2 bg-leafSoft text-leaf px-4 py-2 rounded-full text-sm font-display font-semibold">
             <span>⭐</span>
             <span>{totalStars}/20 estrelas</span>
           </div>
 
-          <p className="mt-4 text-base text-muted font-display">
+          <p className="mt-3 text-sm sm:text-base text-muted font-display">
             {getMessage(totalStars)}
           </p>
         </div>
@@ -116,7 +121,7 @@ export default function ResultScreen({
       {/* Botão Continuar */}
       <button
         onClick={onContinue}
-        className="btn-primary w-full max-w-sm text-base animate-slide-up"
+        className="btn-primary w-full max-w-sm text-base animate-slide-up min-h-[56px]"
         style={{ animationDelay: "0.6s", animationFillMode: "backwards" }}
       >
         Continuar

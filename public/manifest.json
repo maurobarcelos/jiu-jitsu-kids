@@ -4,8 +4,8 @@
   "description": "Sistema de recompensas de jiu jitsu",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#FFF8E7",
-  "theme_color": "#FFD93D",
+  "background_color": "#FFFFFF",
+  "theme_color": "#FFFFFF",
   "orientation": "portrait",
   "icons": [
     {

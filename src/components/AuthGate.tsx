@@ -32,7 +32,13 @@ export default function AuthGate({ onAuth }: { onAuth: () => void }) {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-6 bg-white">
+    <div
+      className="min-h-screen flex items-center justify-center px-6 bg-white"
+      style={{
+        paddingTop: 'max(1.5rem, env(safe-area-inset-top))',
+        paddingBottom: 'max(1.5rem, env(safe-area-inset-bottom))',
+      }}
+    >
       <div className="w-full max-w-sm animate-fade-in">
         {/* Mascote */}
         <div className="text-center mb-10">
@@ -84,7 +90,7 @@ export default function AuthGate({ onAuth }: { onAuth: () => void }) {
           <button
             type="submit"
             disabled={loading}
-            className="w-full btn-primary text-base disabled:opacity-50"
+            className="w-full btn-primary text-base disabled:opacity-50 min-h-[56px]"
           >
             {loading ? "Aguarde..." : isSignup ? "Criar conta" : "Entrar"}
           </button>

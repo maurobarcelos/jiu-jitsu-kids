@@ -132,8 +132,8 @@ export default function Game({
         />
       )}
 
-      <div className="min-h-screen bg-white pb-12">
-        <div className="max-w-md mx-auto px-5 pt-5">
+      <div className="min-h-screen bg-white" style={{ paddingBottom: 'max(3rem, env(safe-area-inset-bottom))' }}>
+        <div className="max-w-md mx-auto px-5" style={{ paddingTop: 'max(1.25rem, env(safe-area-inset-top))' }}>
           {/* HEADER */}
           <header className="flex items-center justify-between mb-6">
             <div className="flex items-center gap-3">
@@ -224,7 +224,7 @@ export default function Game({
             <button
               onClick={handleSubmit}
               disabled={!allFilled || saving}
-              className="w-full btn-accent mt-6 text-base"
+              className="w-full btn-accent mt-6 text-base min-h-[56px]"
             >
               {saving ? "Salvando..." : "Ver recompensa"}
             </button>
@@ -360,10 +360,10 @@ function HistoryItem({
       </div>
       <button
         onClick={onDelete}
-        className="text-muted/40 hover:text-cherry transition-colors p-1 flex-shrink-0"
-        aria-label="Apagar"
+        className="text-muted/40 hover:text-cherry active:text-cherry transition-colors p-3 flex-shrink-0 min-w-[44px] min-h-[44px] flex items-center justify-center"
+        aria-label="Apagar treino"
       >
-        <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+        <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
           <path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
         </svg>
       </button>

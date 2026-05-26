@@ -15,7 +15,7 @@ export default function StarRating({
   }
 
   return (
-    <div className="flex justify-center gap-1.5">
+    <div className="flex justify-center gap-1">
       {[1, 2, 3, 4, 5].map((n) => {
         const active = n <= value;
         return (
@@ -23,7 +23,7 @@ export default function StarRating({
             key={n}
             type="button"
             onClick={() => handleClick(n)}
-            className="text-4xl select-none touch-manipulation transition-transform active:scale-90 p-1"
+            className="text-4xl select-none touch-manipulation transition-transform active:scale-90 p-2 min-w-[48px] min-h-[48px] flex items-center justify-center"
             style={{
               filter: active ? "none" : "grayscale(100%) opacity(0.25)",
               transform: active ? "scale(1)" : "scale(0.9)",
