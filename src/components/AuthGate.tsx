@@ -32,39 +32,37 @@ export default function AuthGate({ onAuth }: { onAuth: () => void }) {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-5 bg-cream">
-      <div className="w-full max-w-sm">
-        <div className="text-center mb-6">
-          <div className="text-7xl mb-2 animate-bounce-slow">🐯</div>
-          <h1 className="font-display text-3xl font-bold text-ink">
+    <div className="min-h-screen flex items-center justify-center px-6 bg-white">
+      <div className="w-full max-w-sm animate-fade-in">
+        {/* Mascote */}
+        <div className="text-center mb-10">
+          <div className="text-7xl mb-4 animate-float inline-block">🐯</div>
+          <h1 className="font-display text-4xl font-semibold text-ink tracking-tight">
             Tigrão Jiu Jitsu
           </h1>
-          <p className="text-sm text-ink/70 mt-1">
-            {isSignup ? "Crie sua conta" : "Faça login pra começar"}
+          <p className="text-sm text-muted mt-2">
+            {isSignup ? "Crie sua conta para começar" : "Faça login para continuar"}
           </p>
         </div>
 
-        <form
-          onSubmit={handleSubmit}
-          className="card-chunky p-5 space-y-4"
-        >
+        <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block font-display font-bold text-sm mb-2">
-              📧 Email
+            <label className="block text-xs font-display font-semibold text-muted uppercase tracking-wider mb-2">
+              Email
             </label>
             <input
               type="email"
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full border-[3px] border-ink rounded-2xl px-4 py-3 focus:outline-none focus:ring-4 focus:ring-sunshine/50"
+              className="w-full bg-surface border border-border rounded-2xl px-4 py-4 focus:outline-none focus:ring-2 focus:ring-leaf/30 focus:border-leaf transition-all"
               placeholder="seu@email.com"
             />
           </div>
 
           <div>
-            <label className="block font-display font-bold text-sm mb-2">
-              🔒 Senha
+            <label className="block text-xs font-display font-semibold text-muted uppercase tracking-wider mb-2">
+              Senha
             </label>
             <input
               type="password"
@@ -72,13 +70,13 @@ export default function AuthGate({ onAuth }: { onAuth: () => void }) {
               minLength={6}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full border-[3px] border-ink rounded-2xl px-4 py-3 focus:outline-none focus:ring-4 focus:ring-sunshine/50"
+              className="w-full bg-surface border border-border rounded-2xl px-4 py-4 focus:outline-none focus:ring-2 focus:ring-leaf/30 focus:border-leaf transition-all"
               placeholder="••••••"
             />
           </div>
 
           {error && (
-            <div className="bg-cherry/10 border-[3px] border-cherry rounded-2xl p-3 text-sm font-bold text-cherry">
+            <div className="bg-cherry/10 border border-cherry/30 rounded-2xl p-3 text-sm text-cherry">
               {error}
             </div>
           )}
@@ -86,15 +84,15 @@ export default function AuthGate({ onAuth }: { onAuth: () => void }) {
           <button
             type="submit"
             disabled={loading}
-            className="w-full btn-chunky bg-leaf text-white shadow-chunky-green text-lg disabled:opacity-50"
+            className="w-full btn-primary text-base disabled:opacity-50"
           >
-            {loading ? "Aguarde..." : isSignup ? "🎉 Criar conta" : "▶️ Entrar"}
+            {loading ? "Aguarde..." : isSignup ? "Criar conta" : "Entrar"}
           </button>
 
           <button
             type="button"
             onClick={() => setIsSignup(!isSignup)}
-            className="w-full text-sm text-ink/70 underline font-bold"
+            className="w-full text-sm text-muted hover:text-ink transition-colors py-2"
           >
             {isSignup
               ? "Já tem conta? Faça login"

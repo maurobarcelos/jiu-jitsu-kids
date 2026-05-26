@@ -15,7 +15,7 @@ export default function StarRating({
   }
 
   return (
-    <div className="flex justify-center gap-2">
+    <div className="flex justify-center gap-1.5">
       {[1, 2, 3, 4, 5].map((n) => {
         const active = n <= value;
         return (
@@ -23,10 +23,12 @@ export default function StarRating({
             key={n}
             type="button"
             onClick={() => handleClick(n)}
-            className="text-5xl select-none touch-manipulation transition-transform active:scale-90"
+            className="text-4xl select-none touch-manipulation transition-transform active:scale-90 p-1"
             style={{
-              filter: active ? "none" : "grayscale(100%) opacity(0.3)",
+              filter: active ? "none" : "grayscale(100%) opacity(0.25)",
+              transform: active ? "scale(1)" : "scale(0.9)",
               animation: active ? "starPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)" : "none",
+              transition: "filter 0.3s, transform 0.3s",
             }}
             aria-label={`${n} estrelas`}
           >
